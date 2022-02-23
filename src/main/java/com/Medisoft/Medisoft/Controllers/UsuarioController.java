@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private UsuarioService usuarioServiceImpl;
 
     @GetMapping(value = "/getUsuario/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Usuario> getUsuario(@PathVariable String nombre) {
-        Usuario user = usuarioService.getUsuario(nombre);
+        Usuario user = usuarioServiceImpl.getUsuario(nombre);
 
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -27,7 +27,7 @@ public class UsuarioController {
     @PostMapping(value = "/postPersona", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Persona> postUsuario(@RequestBody Persona persona) {
-        usuarioService.postPersona(persona);
+        usuarioServiceImpl.postPersona(persona);
 
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
